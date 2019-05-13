@@ -117,6 +117,14 @@ impl RedisClient {
     }
 
     /// SET KEY VALUE
+    /// # Example
+    /// 
+    /// ```
+    /// let sock_addr: &str = "127.0.0.1:6379";
+    /// let mut client = RedisClient::new(sock_addr);
+    /// client.set("x", "111");
+    /// println!("{}", client.get("x"));
+    /// ```
     pub fn set(&mut self, key: &str, val: &str) {
         let mut cmd = CommandWriter::new();
         cmd.write_arrs(3)
@@ -139,6 +147,14 @@ impl RedisClient {
     }
 
     /// GET KEY
+    /// # Example
+    /// 
+    /// ```
+    /// let sock_addr: &str = "127.0.0.1:6379";
+    /// let mut client = RedisClient::new(sock_addr);
+    /// client.set("x", "111");
+    /// println!("{}", client.get("x"));
+    /// ```
     pub fn get(mut self, key: &str) -> String {
         let mut cmd = CommandWriter::new();
         cmd.write_arrs(2)
